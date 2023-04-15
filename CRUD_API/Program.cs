@@ -1,4 +1,6 @@
 using CRUD_API.Database;
+using CRUD_API.Interfaces;
+using CRUD_API.Storages;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
 	options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
+
+builder.Services.AddTransient<IResidentStorage, ResidentStorage>();
 
 var app = builder.Build();
 

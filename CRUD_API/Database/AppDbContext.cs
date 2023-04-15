@@ -6,7 +6,7 @@ namespace CRUD_API.Database
 {
 	public class AppDbContext:DbContext
 	{
-		public DbSet<Resident> Residents;
+		public DbSet<Resident> Resident { get; set; }
 		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
